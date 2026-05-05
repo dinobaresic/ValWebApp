@@ -75,10 +75,17 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-white/25 text-sm">
           <p>{t("copyright")}</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             <span>{t("oib")}</span>
             <span>·</span>
             <span>{t("address")}</span>
+            <span>·</span>
+            <button 
+              onClick={() => window.dispatchEvent(new Event("val-open-cookie-settings"))}
+              className="hover:text-[#00b4d8] transition-colors cursor-pointer"
+            >
+              {t("cookie_settings")}
+            </button>
           </div>
         </div>
       </div>

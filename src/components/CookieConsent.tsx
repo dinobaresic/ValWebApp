@@ -22,11 +22,19 @@ export default function CookieConsent() {
   });
 
   useEffect(() => {
+    const handleOpen = () => {
+      setIsVisible(true);
+      setShowDetails(true);
+    };
+    window.addEventListener("val-open-cookie-settings", handleOpen);
+
     const consent = localStorage.getItem("val-cookie-consent");
     if (!consent) {
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     }
+
+    return () => window.removeEventListener("val-open-cookie-settings", handleOpen);
   }, []);
 
   const saveConsent = (updatedSettings: CookieSettings) => {
