@@ -85,14 +85,14 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto w-full pt-28 md:pt-0"
+        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto w-full pt-20 md:pt-0"
       >
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 md:mb-10 text-xs md:text-sm text-[#48cae4] font-medium"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 md:mb-10 text-[10px] md:text-sm text-[#48cae4] font-medium"
           style={{
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(0,180,216,0.28)",
@@ -111,10 +111,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mb-6 md:mb-8"
+          className="mb-4 md:mb-8"
         >
           <Sun
-            className="w-12 h-12 md:w-16 md:h-16 text-[#e9c46a]"
+            className="w-10 h-10 md:w-16 md:h-16 text-[#e9c46a]"
             strokeWidth={1.5}
             style={{ filter: "drop-shadow(0 0 20px rgba(233, 196, 106, 0.4))" }}
           />
@@ -125,7 +125,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight mb-6 md:mb-7"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight mb-4 md:mb-7"
         >
           <span className="text-white block">{t("title1")}</span>
           <span
@@ -146,7 +146,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.3 }}
-          className="text-base md:text-lg text-white/50 max-w-xl leading-relaxed mb-11"
+          className="text-sm md:text-lg text-white/50 max-w-xl leading-relaxed mb-8 md:mb-11"
         >
           {t("subtitle")}
         </motion.p>
@@ -156,18 +156,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
         >
           <Link
             href="/cijene"
-            className="px-9 py-4 rounded-full text-base font-bold cursor-pointer transition-all duration-300 hover:scale-105 inline-block"
+            className="px-8 md:px-9 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold cursor-pointer transition-all duration-300 hover:scale-105 inline-block"
             style={{ background: "#00b4d8", color: "#030b1a", boxShadow: "0 0 32px rgba(0,180,216,0.45)" }}
           >
             {t("cta_pricing")}
           </Link>
           <button
             onClick={() => scrollTo("#usluge")}
-            className="px-9 py-4 rounded-full text-base font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
+            className="px-8 md:px-9 py-3.5 md:py-4 rounded-full text-sm md:text-base font-semibold cursor-pointer transition-all duration-300 hover:scale-105"
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.18)",
@@ -184,7 +184,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.65 }}
-          className="mt-20 flex items-center gap-10 md:gap-16"
+          className="mt-10 md:mt-20 flex items-center gap-8 md:gap-16"
         >
           {[
             { value: t("stat_founded_value"), label: t("stat_founded_label") },
@@ -192,10 +192,10 @@ export default function Hero() {
             { value: t("stat_satisfaction_value"), label: t("stat_satisfaction_label") },
           ].map((s, i) => (
             <div key={i} className="flex flex-col items-center gap-1">
-              <span className="text-2xl md:text-3xl font-black" style={{ color: "#00b4d8" }}>
+              <span className="text-xl md:text-3xl font-black" style={{ color: "#00b4d8" }}>
                 {s.value}
               </span>
-              <span className="text-xs text-white/35 font-medium tracking-wider">{s.label}</span>
+              <span className="text-[10px] text-white/35 font-medium tracking-wider">{s.label}</span>
             </div>
           ))}
         </motion.div>
