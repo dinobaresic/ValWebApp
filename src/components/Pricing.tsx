@@ -1,15 +1,16 @@
 "use client";
 
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Waves, Anchor, Ship, Droplets, Umbrella, BedDouble } from "lucide-react";
 
-const columns = ["1/2h", "1h", "2h", "3h", "4h"] as const;
+const columns = ["1/2h", "1h", "2h", "3h", "4h", "1d"] as const;
 
 export default function Pricing() {
   const t = useTranslations("pricing");
   const ref = useRef(null);
+  const [selectedIdx, setSelectedIdx] = useState(1); // Default to 1h
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [50, -50]);
@@ -67,11 +68,68 @@ export default function Pricing() {
           </motion.p>
         </div>
 
+        {/* Mobile: Selector UI */}
+        <div className="md:hidden space-y-6">
+          <div className="flex flex-wrap justify-center gap-2">
+            {columns.map((col, idx) => (
+              <button
+                key={col}
+                onClick={() => setSelectedIdx(idx)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 border ${
+                  selectedIdx === idx
+                    ? "bg-[#00b4d8] text-[#030b1a] border-[#00b4d8] shadow-[0_0_15px_rgba(0,180,216,0.3)]"
+                    : "bg-white/5 text-white/40 border-white/10 hover:border-white/20"
+                }`}
+              >
+                {col}
+              </button>
+            ))}
+          </div>
+
+          <motion.div
+            layout
+            className="space-y-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {items.map((item) => {
+              const price = item.prices[selectedIdx];
+              return (
+                <div
+                  key={item.name}
+                  className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-md"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.2)" }}
+                    >
+                      <item.Icon className="w-5 h-5 text-[#00b4d8]" />
+                    </div>
+                    <span className="text-white font-bold text-sm">{item.name}</span>
+                  </div>
+                  <div className="text-right">
+                    {price !== null ? (
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-2xl font-black text-white">{price}</span>
+                        <span className="text-[#00b4d8] font-bold text-xs">€</span>
+                      </div>
+                    ) : (
+                      <span className="text-white/20 font-light">—</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* Desktop: Table UI */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.24 }}
-          className="w-full overflow-x-auto pb-4"
+          className="hidden md:block w-full"
         >
           <div
             className="mx-auto rounded-3xl overflow-hidden"
@@ -84,48 +142,45 @@ export default function Pricing() {
             }}
           >
             {/* Header */}
-            <div className="min-w-[700px]">
-              <div className="grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] border-b border-white/10 bg-white/[0.03] p-5 text-white/50 text-[10px] md:text-sm font-semibold tracking-wider text-center items-center">
-                <div className="text-center">{t("col_service")}</div>
-                {columns.map((col) => (
-                  <div key={col}>{col}</div>
-                ))}
-                <div>1d</div>
-              </div>
+            <div className="grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] border-b border-white/10 bg-white/[0.03] p-5 text-white/50 text-sm font-semibold tracking-wider text-center items-center">
+              <div className="text-center">{t("col_service")}</div>
+              {columns.map((col) => (
+                <div key={col}>{col}</div>
+              ))}
+            </div>
 
-              {/* Rows */}
-              <div className="flex flex-col">
-                {items.map((item, index) => (
-                  <div
-                    key={item.name}
-                    className={`grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] items-center p-4 text-center transition-colors hover:bg-white/[0.03] ${
-                      index !== items.length - 1 ? "border-b border-white/5" : ""
-                    }`}
-                  >
-                    <div className="flex items-center justify-center gap-3">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.2)" }}
-                      >
-                        <item.Icon className="w-5 h-5 text-[#00b4d8]" />
-                      </div>
-                      <span className="text-white font-bold text-sm md:text-base whitespace-nowrap">{item.name}</span>
+            {/* Rows */}
+            <div className="flex flex-col">
+              {items.map((item, index) => (
+                <div
+                  key={item.name}
+                  className={`grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] items-center p-4 text-center transition-colors hover:bg-white/[0.03] ${
+                    index !== items.length - 1 ? "border-b border-white/5" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.2)" }}
+                    >
+                      <item.Icon className="w-5 h-5 text-[#00b4d8]" />
                     </div>
-                    {item.prices.map((price, i) => (
-                      <div key={i} className="flex justify-center">
-                        {price !== null ? (
-                          <div className="flex items-baseline gap-0.5">
-                            <span className="text-lg md:text-2xl font-black text-white">{price}</span>
-                            <span className="text-[#00b4d8] font-bold text-[10px] md:text-xs">€</span>
-                          </div>
-                        ) : (
-                          <span className="text-white/20 font-light text-xl">—</span>
-                        )}
-                      </div>
-                    ))}
+                    <span className="text-white font-bold text-base whitespace-nowrap">{item.name}</span>
                   </div>
-                ))}
-              </div>
+                  {item.prices.map((price, i) => (
+                    <div key={i} className="flex justify-center">
+                      {price !== null ? (
+                        <div className="flex items-baseline gap-0.5">
+                          <span className="text-2xl font-black text-white">{price}</span>
+                          <span className="text-[#00b4d8] font-bold text-xs">€</span>
+                        </div>
+                      ) : (
+                        <span className="text-white/20 font-light text-xl">—</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -134,7 +189,7 @@ export default function Pricing() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
-          className="text-center text-white/30 text-sm mt-6"
+          className="text-center text-white/30 text-sm mt-8"
         >
           {t("footer_note")}
         </motion.p>
