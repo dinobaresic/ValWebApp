@@ -151,10 +151,17 @@
     "contact_desc": "Kontaktirajte VAL — telefon, email, društvene mreže. Rezervirajte opremu za savršen dan na moru u Dragama."
   },
   "cookies": {
-    "title": "Kolačići",
-    "description": "Koristimo kolačiće kako bismo osigurali najbolje iskustvo na našoj web stranici i analizirali promet.",
+    "title": "Postavke privatnosti",
+    "description": "Koristimo kolačiće kako bismo osigurali najbolje iskustvo. Neki su nužni za rad stranice, dok nam drugi pomažu u poboljšanju usluge.",
     "accept": "Prihvati sve",
-    "decline": "Odbij",
-    "settings": "Postavke"
+    "decline": "Odbij sve",
+    "save": "Spremi postavke",
+    "settings": "Prilagodi",
+    "essential_title": "Nužni kolačići",
+    "essential_desc": "Ovi kolačići su neophodni za osnovno funkcioniranje web stranice i ne mogu se isključiti.",
+    "analytics_title": "Analitički kolačići",
+    "analytics_desc": "Pomažu nam razumjeti kako posjetitelji komuniciraju sa stranicom (npr. Google Analytics).",
+    "marketing_title": "Marketinški kolačići",
+    "marketing_desc": "Koriste se za praćenje posjetitelja kako bi se prikazali relevantni oglasi."
   }
 }
