@@ -85,14 +85,14 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto w-full pt-20 md:pt-0"
+        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto w-full pt-16 md:pt-0"
       >
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 md:mb-10 text-[10px] md:text-sm text-[#48cae4] font-medium"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-2 md:mb-10 text-[10px] md:text-sm text-[#48cae4] font-medium"
           style={{
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(0,180,216,0.28)",
@@ -111,10 +111,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mb-4 md:mb-8"
+          className="mb-2 md:mb-8"
         >
           <Sun
-            className="w-10 h-10 md:w-16 md:h-16 text-[#e9c46a]"
+            className="w-8 h-8 md:w-16 md:h-16 text-[#e9c46a]"
             strokeWidth={1.5}
             style={{ filter: "drop-shadow(0 0 20px rgba(233, 196, 106, 0.4))" }}
           />
@@ -125,7 +125,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight mb-4 md:mb-7"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight mb-3 md:mb-7"
         >
           <span className="text-white block">{t("title1")}</span>
           <span
@@ -146,7 +146,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.3 }}
-          className="text-sm md:text-lg text-white/50 max-w-xl leading-relaxed mb-8 md:mb-11"
+          className="text-sm md:text-lg text-white/50 max-w-xl leading-relaxed mb-6 md:mb-11"
         >
           {t("subtitle")}
         </motion.p>
