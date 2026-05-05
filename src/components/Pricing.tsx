@@ -84,46 +84,48 @@ export default function Pricing() {
             }}
           >
             {/* Header */}
-            <div className="grid grid-cols-[minmax(180px,2fr)_repeat(6,1fr)] border-b border-white/10 bg-white/[0.03] p-5 text-white/50 text-sm font-semibold tracking-wider text-center items-center">
-              <div className="text-center">{t("col_service")}</div>
-              {columns.map((col) => (
-                <div key={col}>{col}</div>
-              ))}
-              <div>1d</div>
-            </div>
+            <div className="min-w-[700px]">
+              <div className="grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] border-b border-white/10 bg-white/[0.03] p-5 text-white/50 text-[10px] md:text-sm font-semibold tracking-wider text-center items-center">
+                <div className="text-center">{t("col_service")}</div>
+                {columns.map((col) => (
+                  <div key={col}>{col}</div>
+                ))}
+                <div>1d</div>
+              </div>
 
-            {/* Rows */}
-            <div className="flex flex-col">
-              {items.map((item, index) => (
-                <div
-                  key={item.name}
-                  className={`grid grid-cols-[minmax(180px,2fr)_repeat(6,1fr)] items-center p-4 text-center transition-colors hover:bg-white/[0.03] ${
-                    index !== items.length - 1 ? "border-b border-white/5" : ""
-                  }`}
-                >
-                  <div className="flex items-center justify-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.2)" }}
-                    >
-                      <item.Icon className="w-5 h-5 text-[#00b4d8]" />
+              {/* Rows */}
+              <div className="flex flex-col">
+                {items.map((item, index) => (
+                  <div
+                    key={item.name}
+                    className={`grid grid-cols-[minmax(160px,2fr)_repeat(6,1fr)] items-center p-4 text-center transition-colors hover:bg-white/[0.03] ${
+                      index !== items.length - 1 ? "border-b border-white/5" : ""
+                    }`}
+                  >
+                    <div className="flex items-center justify-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                        style={{ background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.2)" }}
+                      >
+                        <item.Icon className="w-5 h-5 text-[#00b4d8]" />
+                      </div>
+                      <span className="text-white font-bold text-sm md:text-base whitespace-nowrap">{item.name}</span>
                     </div>
-                    <span className="text-white font-bold text-base whitespace-nowrap">{item.name}</span>
+                    {item.prices.map((price, i) => (
+                      <div key={i} className="flex justify-center">
+                        {price !== null ? (
+                          <div className="flex items-baseline gap-0.5">
+                            <span className="text-lg md:text-2xl font-black text-white">{price}</span>
+                            <span className="text-[#00b4d8] font-bold text-[10px] md:text-xs">€</span>
+                          </div>
+                        ) : (
+                          <span className="text-white/20 font-light text-xl">—</span>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                  {item.prices.map((price, i) => (
-                    <div key={i} className="flex justify-center">
-                      {price !== null ? (
-                        <div className="flex items-baseline gap-0.5">
-                          <span className="text-xl md:text-2xl font-black text-white">{price}</span>
-                          <span className="text-[#00b4d8] font-bold text-xs">€</span>
-                        </div>
-                      ) : (
-                        <span className="text-white/20 font-light text-xl">—</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
