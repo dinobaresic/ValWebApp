@@ -32,6 +32,7 @@ export default function Hero() {
             loop
             muted
             playsInline
+            poster="/images/photo-1.jpg"
             className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 object-cover opacity-30 mix-blend-screen"
             style={{ pointerEvents: 'none' }}
           >
