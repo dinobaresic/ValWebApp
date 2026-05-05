@@ -149,5 +149,12 @@
     "about_desc": "Upoznajte VAL — obiteljski obrt osnovan 2021. u uvali Dolaška Draga.",
     "contact_title": "Kontakt — VAL | Drage",
     "contact_desc": "Kontaktirajte VAL — telefon, email, društvene mreže. Rezervirajte opremu za savršen dan na moru u Dragama."
+  },
+  "cookies": {
+    "title": "Kolačići",
+    "description": "Koristimo kolačiće kako bismo osigurali najbolje iskustvo na našoj web stranici i analizirali promet.",
+    "accept": "Prihvati sve",
+    "decline": "Odbij",
+    "settings": "Postavke"
   }
 }

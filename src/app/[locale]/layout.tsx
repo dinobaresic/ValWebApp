@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+import CookieConsent from "@/components/CookieConsent";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           />
           <NextIntlClientProvider messages={messages}>
             {children}
+            <CookieConsent />
           </NextIntlClientProvider>
         </div>
       </body>

@@ -149,5 +149,12 @@
     "about_desc": "Meet VAL — a family business founded in 2021 in Dolaška Draga bay, Croatia.",
     "contact_title": "Contact — VAL | Drage, Croatia",
     "contact_desc": "Contact VAL — phone, email, social media. Book equipment for a perfect day at sea in Drage, Croatia."
+  },
+  "cookies": {
+    "title": "Cookies",
+    "description": "We use cookies to ensure you get the best experience on our website and to analyze traffic.",
+    "accept": "Accept all",
+    "decline": "Decline",
+    "settings": "Settings"
   }
 }
