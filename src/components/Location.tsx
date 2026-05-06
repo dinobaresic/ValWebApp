@@ -116,13 +116,14 @@ export default function Location() {
           >
             <div className="absolute inset-0 bg-[#030b1a]/20 z-10 pointer-events-none transition-opacity duration-300 group-hover:opacity-0" />
             <video
-              autoPlay
               loop
-              muted
               playsInline
               controls
+              preload="none"
+              poster="/images/photo-1.jpg"
               className="w-full h-full object-cover"
             >
+              <source src="/videos/hero-bg.webm" type="video/webm" />
               <source src="/videos/hero-bg.mp4" type="video/mp4" />
             </video>
             {/* Overlay Title */}
