@@ -5,6 +5,7 @@ import { ChevronDown, Sun } from "lucide-react";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -25,6 +26,14 @@ export default function Hero() {
     >
       {/* Background */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#030b1a]">
+        {/* Preload Poster */}
+        <Image
+          src="/images/photo-1.jpg"
+          alt="Hero Poster Preload"
+          fill
+          priority
+          className="opacity-0 pointer-events-none"
+        />
         {/* Local Background Video */}
         <div className="absolute inset-0 pointer-events-none w-full h-full">
           <video

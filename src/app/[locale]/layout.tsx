@@ -5,7 +5,8 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-import CookieConsent from "@/components/CookieConsent";
+import dynamic from "next/dynamic";
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
 
 const geist = Geist({
   variable: "--font-geist-sans",

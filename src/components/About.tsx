@@ -144,7 +144,7 @@ export default function About() {
             src={`/images/photo-3.jpg`}
             alt={`${t("photo_alt")} 1`}
             fill
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1152px"
             className="object-cover transition-transform duration-[1.5s] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[#030b1a]/10 pointer-events-none" />
