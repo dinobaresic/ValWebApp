@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 import dynamic from "next/dynamic";
-const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"));
 
 const geist = Geist({
   variable: "--font-geist-sans",
